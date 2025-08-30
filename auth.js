@@ -1,4 +1,4 @@
-// Firebase 設定金鑰
+// Firebase 設定金鑰 
 const firebaseConfig = {
   apiKey: "AIzaSyCMrhWYCupWav7PHkjofEE_4qkSiVryXkI",
   authDomain: "laborfee-51d5a.firebaseapp.com",
