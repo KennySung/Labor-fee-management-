@@ -1,0 +1,224 @@
+/* 頁面通用樣式與排版 */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+    transition: box-shadow 0.3s ease;
+}
+
+.container:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+h1, h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+h1 { font-size: 2.2rem; }
+h2 { font-size: 1.8rem; }
+
+/* 表單區域樣式 */
+.form-section, #auth-section {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+    .form-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+/* 按鈕樣式與動畫 */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+@media (min-width: 480px) {
+    .button-group {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+button {
+    padding: 14px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#login-btn, #add-btn, #register-btn {
+    background-color: #3498db;
+    color: #fff;
+}
+
+#logout-btn {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+#toggle-register, #toggle-login, #forgot-password {
+    background-color: #bdc3c7;
+    color: #2c3e50;
+}
+
+#print-pdf-btn {
+    background-color: #2ecc71;
+    color: #fff;
+}
+
+.welcome-message {
+    text-align: right;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* 報酬單預覽區塊樣式 */
+#preview-section {
+    margin-top: 40px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* ... (其餘與之前相同的樣式) ... */
+
+.pay-stub {
+    border: 1px dashed #ccc;
+    padding: 25px;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+.pay-stub h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+}
+
+.pay-stub .detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.pay-stub .detail-row:last-child {
+    border-bottom: none;
+}
+
+.pay-stub .detail-row strong {
+    color: #555;
+    min-width: 120px;
+}
+
+.pay-stub .detail-row span {
+    text-align: right;
+    font-weight: 500;
+}
+        
+/* 隱藏表單和按鈕，只顯示報酬單內容供列印 */
+@media print {
+    body {
+        background-color: #fff;
+    }
+    .container {
+        box-shadow: none;
+        padding: 0;
+    }
+    #app-section, .form-section, .button-group, h1, .welcome-message, hr {
+        display: none;
+    }
+    #preview-section {
+        border: none;
+        box-shadow: none;
+        background-color: transparent;
+        padding: 0;
+        margin-top: 0;
+    }
+    .pay-stub {
+        border: 1px solid #000;
+        page-break-after: always; /* 每張報酬單都強制分頁 */
+    }
+    .pay-stub:last-child {
+        page-break-after: auto;
+    }
+}
